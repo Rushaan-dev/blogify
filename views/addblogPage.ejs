@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Upload Blog</title>
+</head>
+
+<body class="bg-dark text-light">
+    <%- include('./partials/nav') %>
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card bg-secondary shadow-lg w-100" style="max-width: 600px;">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">📝 Upload Your Blog Post</h3>
+                <form enctype="multipart/form-data" action="/blog/addblog" method="post">
+                    <div class="mb-3">
+                        <label for="inputGroupFile01" class="form-label">Blog Image</label>
+                        <input type="file" name="blogimage" class="form-control" id="inputGroupFile01">
+                    </div>
+                    <div class="mb-3">
+                        <label for="blogtitle" class="form-label">Content</label>
+                        <input type="text" name="title" class="form-control" id="blogtitle" placeholder="Type your blog title here...">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="blogContent" class="form-label">Content</label>
+                        <input type="text" name="content" class="form-control" id="blogContent" placeholder="Type your blog content here...">
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg">Upload Blog</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/script') %>
+</body>
+
+</html>

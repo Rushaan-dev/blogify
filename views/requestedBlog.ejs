@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Homepage</title>
+</head>
+<body class="bg-dark">
+    <%- include('./partials/nav') %>
+    <div class="container">
+        <img src="/blogpics/<%= locals.blog.blogimage %>" class="img-fluid display-content-center" style="height: 70vh; width: 100%;" alt="">
+    </div>
+    <h1 class="m-4 container text-white " style="text-align: center;">
+        <%= blog.title %>
+    </h1>
+    <pre class="container text-white context-white fs-5" style="white-space: pre-wrap;">
+        <%= blog.content %>
+    </pre>
+
+
+    <% if (locals.comment) { %>
+        <% comment.forEach(element => { %>
+            <div class="card mb-3 container" style="max-width: 100%;">
+                <div class="row g-0">
+                    <div class="col-auto">
+                        <img src="/defaultpic/user.png" class="img-fluid rounded-start" alt="User image" style="width: 60px; height: 60px; object-fit: cover; margin: 10px;">
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1"><%= element.postedby.fullname %></h5>
+                            <p class="card-text mb-1"><%= element.content %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p class="text-muted">No comments yet.</p>
+    <% } %>
+
+
+    <% if (locals.user) { %>
+     <form class="mb-3" action="/blog/comment/<%= locals.blog._id %>" method="post">
+        <div class="input-group input-group-lg container">
+            <span class="input-group-text" id="inputGroup-sizing-lg">
+                <img src="/defaultpic/user.png" style="width: 70px; height: 40px;" alt="User image">
+            </span>
+        <input
+        type="text"
+        class="form-control "
+        placeholder="Type your comment..."
+        name="commentcontent"
+        style="::placeholder { color: white; }"
+        />
+
+            <button class="btn btn-primary" type="submit" id="inputGroupFileAddon04">Submit</button>
+        </div>
+    </form>
+    <% } %>
+    <% if (!user) { %>
+     <h4 class="text-white" style="text-align: center;">Signin to make comment</h4>
+    <% } %>
+    
+    <%- include('./partials/script') %>
+</body>
+</html>

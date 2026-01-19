@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Signin</title>
+</head>
+
+<body class="bg-black vh-100">
+
+    <!-- Alert (only shown if flag === 1) -->
+    <% if (locals.flag === 1) { %>
+        <div class="container position-absolute top-0 start-0 end-0 mt-3">
+            <div id="alertboxforsignin" class="alert alert-danger fade show text-center mb-0" role="alert">
+                Incorrect Credentials
+            </div>
+        </div>
+    <% } %>
+
+    <!-- Signin Form -->
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card bg-dark text-white shadow-lg rounded">
+                        <div class="card-body p-4">
+                            <h2 class="text-center mb-4">Signin</h2>
+                            <form action="/signin" method="post">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control bg-black text-white border-secondary" id="email" name="email" placeholder="" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control bg-black text-white border-secondary" id="password" name="password" placeholder="">
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Signin</button>
+                                </div>
+                                <p class="mt-3 text-center text-white">
+                                    Don't have an account?
+                                    <a href="/signup" class="text-primary text-decoration-none">Create account</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert auto-dismiss script (after 2.7s + fade delay) -->
+    <% if (locals.flag === 1) { %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                setTimeout(() => {
+                    const alertBox = document.getElementById('alertboxforsignin');
+                    if (alertBox) {
+                        alertBox.classList.remove('show'); // Bootstrap fade-out
+                        alertBox.classList.add('fade');   // Keep fade class
+                        setTimeout(() => {
+                            alertBox.remove(); // Remove from DOM
+                        }, 500); // fade duration
+                    }
+                }, 2700); // 10 seconds
+            });
+        </script>
+    <% } %>
+
+    <!-- Other shared scripts -->
+    <%- include('./partials/script') %>
+
+</body>
+
+</html>
