@@ -7,6 +7,7 @@ A simple blogging platform built with Node.js, Express, MongoDB, EJS, and Bootst
 - Blog creation
 - Cookie-based login
 - Server-side rendering with EJS
+- Users can comment on blogs
 
 ## Tech Stack
 - Node.js
