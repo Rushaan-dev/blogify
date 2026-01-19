@@ -1,6 +1,6 @@
 # Blogify
 
-A simple blogging platform built with Node.js, Express, MongoDB, and EJS.
+A simple blogging platform built with Node.js, Express, MongoDB, EJS, and Bootstrap.
 
 ## Features
 - User authentication
