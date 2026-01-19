@@ -13,6 +13,7 @@ A simple blogging platform built with Node.js, Express, MongoDB, EJS, and Bootst
 - Express
 - MongoDB
 - EJS
+- Bootstrap
 
 ## Setup Instructions
 
